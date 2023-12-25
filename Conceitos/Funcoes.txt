@@ -1,0 +1,201 @@
+Docstrings:
+Um docstring é uma string que você pode adicionar como um comentário no início de uma função em Python para documentar o que a função faz.
+É uma boa prática incluir docstrings para que você e outros desenvolvedores possam entender facilmente o propósito da função.
+Você pode acessar docstrings usando help(nome_da_função) ou lendo a documentação da função.
+Exemplo:
+def saudacao(nome):
+    """Esta função saúda o usuário com o nome fornecido."""
+    print(f"Olá, {nome}!")
+
+# Para acessar a docstring:
+help(saudacao)
+
+
+Escopo de Variáveis:
+Quando você chama uma função em Python, é criada uma tabela de símbolos local para essa função.
+Todas as variáveis atribuídas dentro da função são armazenadas nessa tabela local.
+As variáveis são pesquisadas primeiro na tabela local, depois em tabelas locais de funções externas, na tabela global e, finalmente, na tabela de nomes da linguagem.
+Variáveis globais e de funções externas podem ser acessadas, mas não podem ser atribuídas diretamente, a menos que você use global (para variáveis globais) ou nonlocal (para variáveis de funções externas).
+Exemplo:
+x = 10  # Variável global
+
+def minha_funcao():
+    y = 5  # Variável local
+    print(x)  # Acessa a variável global
+
+minha_funcao()
+print(y)  # Isso causará um erro, pois y é local para a função
+
+
+Passagem de Argumentos:
+Quando você chama uma função, os valores dos argumentos são passados para a função.
+Os valores são passados como referências para objetos, não como valores reais.
+Isso significa que, dentro da função, você pode modificar objetos mutáveis passados como argumentos (por exemplo, listas), e as mudanças serão refletidas fora da função.
+Exemplo:
+def modificar_lista(lista):
+    lista.append(4)
+
+minha_lista = [1, 2, 3]
+modificar_lista(minha_lista)
+print(minha_lista)  # A lista foi modificada e agora contém [1, 2, 3, 4]
+
+
+Definição de Função:
+Quando você define uma função, você associa um nome de função a um bloco de código que realiza uma tarefa específica.
+O interpretador Python reconhece esse nome como uma função definida pelo usuário.
+Você pode chamar a função pelo nome e executar o bloco de código associado.
+Exemplo:
+def somar(a, b):
+    return a + b
+
+resultado = somar(2, 3)
+print(resultado)  # Saída: 5
+
+
+É possível definir funções com um número variável de argumentos. Existem três formas, que podem ser combinadas.
+Argumentos com valor padrão
+A mais útil das três é especificar um valor padrão para um ou mais argumentos. 
+Isso cria uma função que pode ser invocada com menos argumentos do que os que foram definidos. Por exemplo:
+def ask_ok(prompt, retries=4, reminder='Please try again!'):
+    while True:
+        ok = input(prompt)
+        if ok in ('y', 'ye', 'yes'):
+            return True
+        if ok in ('n', 'no', 'nop', 'nope'):
+            return False
+        retries = retries - 1
+        if retries < 0:
+            raise ValueError('invalid user response')
+        print(reminder)
+
+
+Argumentos com Valor Padrão:
+
+Em Python, você pode definir valores padrão para argumentos de função. Isso permite que você chame a função com menos argumentos do que sua definição.
+Quando você chama a função, se não fornecer um valor para um argumento com valor padrão, o valor padrão definido será usado.
+Isso é útil quando você deseja fornecer argumentos padrão, mas também deseja a flexibilidade de substituí-los quando necessário.
+Exemplo:
+def saudacao(nome, mensagem="Olá"):
+    print(f"{mensagem}, {nome}!")
+
+saudacao("Maria")  # Saída: "Olá, Maria!"
+saudacao("João", "Oi")  # Saída: "Oi, João!"
+
+
+Parâmetros Nomeados:
+Você pode chamar uma função em Python usando argumentos nomeados, especificando o nome do parâmetro junto com o valor. Isso é útil para melhorar a legibilidade e clareza do código.
+Parâmetros nomeados devem ser especificados após os parâmetros posicionais, se houver.
+Exemplo:
+def imprimir_info(nome, idade):
+    print(f"Nome: {nome}, Idade: {idade}")
+
+imprimir_info(nome="Alice", idade=30)
+
+
+Parâmetros Especiais:
+Python permite especificar parâmetros como somente posicionais ou somente nomeados, ou ambos. Isso pode ser feito usando / e * na definição da função.
+Parâmetros somente posicionais são aqueles que podem ser passados apenas por posição, sem nomeá-los.
+Parâmetros somente nomeados são aqueles que devem ser passados por nome, não por posição.
+Exemplo:
+def minha_funcao(pos1, pos2, /, pos_ou_nomeado, *, kwd1, kwd2):
+    # pos1 e pos2 são somente posicionais, pos_ou_nomeado pode ser posicional ou nomeado,
+    # kwd1 e kwd2 devem ser nomeados
+    pass
+
+
+Listas de Argumentos Arbitrárias:
+Você pode criar funções que aceitam um número arbitrário de argumentos, que são empacotados em uma tupla.
+Isso é útil quando você não sabe quantos argumentos serão passados.
+Exemplo:
+def imprimir_itens(*itens):
+    for item in itens:
+        print(item)
+
+imprimir_itens("Maçã", "Banana", "Laranja")
+
+
+Desempacotamento de Listas de Argumentos:
+Às vezes, você pode ter argumentos em uma lista ou tupla e deseja passá-los para uma função que espera argumentos separados. Você pode usar o operador * para desempacotar esses valores.
+Exemplo:
+
+valores = [3, 6]
+resultado = list(range(*valores))
+
+
+ Listas de argumentos arbitrárias
+Finalmente, a opção menos usada é especificar que a função pode ser chamada com um número arbitrário de argumentos. Esses argumentos serão empacotados em uma tupla (ver Tuplas e Sequências). Antes dos argumentos em número variável, zero ou mais argumentos normais podem estar presentes.
+
+def write_multiple_items(file, separator, *args):
+    file.write(separator.join(args))
+
+Normalmente, esses argumentos variádicos estarão no final da lista de parâmetros formais, porque eles englobam todos os argumentos de entrada restantes, que são passados para a função. Quaisquer parâmetros formais que ocorrem após o parâmetro *args são argumentos ‘somente-nomeados’ , o que significa que eles só podem ser usados como chave-valor, em vez de argumentos posicionais:
+
+>>>
+def concat(*args, sep="/"):
+    return sep.join(args)
+
+concat("earth", "mars", "venus")
+'earth/mars/venus'
+concat("earth", "mars", "venus", sep=".")
+'earth.mars.venus'
+
+
+4.8.5. Desempacotando listas de argumentos
+A situação inversa ocorre quando os argumentos já estão numa lista ou tupla mas ela precisa ser explodida para invocarmos uma função que requer argumentos posicionais separados. Por exemplo, a função range() espera argumentos separados, start e stop. Se os valores já estiverem juntos em uma lista ou tupla, escreva a chamada de função com o operador * para desempacotá-los da sequência:
+
+>>>
+list(range(3, 6))            # normal call with separate arguments
+[3, 4, 5]
+args = [3, 6]
+list(range(*args))            # call with arguments unpacked from a list
+[3, 4, 5]
+Da mesma forma, dicionários podem produzir argumentos nomeados com o operador **:
+
+>>>
+def parrot(voltage, state='a stiff', action='voom'):
+    print("-- This parrot wouldn't", action, end=' ')
+    print("if you put", voltage, "volts through it.", end=' ')
+    print("E's", state, "!")
+
+d = {"voltage": "four million", "state": "bleedin' demised", "action": "VOOM"}
+parrot(**d)
+-- This parrot wouldn't VOOM if you put four million volts through it. E's bleedin' demised !
+
+
+
+Expressões lambda
+Pequenas funções anônimas podem ser criadas com a palavra-chave lambda. Esta função retorna a soma de seus dois argumentos: lambda a, b: a+b. As funções lambda podem ser usadas sempre que objetos função forem necessários. Eles são sintaticamente restritos a uma única expressão. Semanticamente, eles são apenas açúcar sintático para uma definição de função normal. Como definições de funções aninhadas, as funções lambda podem referenciar variáveis contidas no escopo:
+
+Função lambda que soma dois números:
+add = lambda x, y: x + y
+print(add(5, 3))  # Saída: 8
+
+Função lambda que retorna o quadrado de um número:
+square = lambda x: x ** 2
+print(square(4))  # Saída: 16
+
+Função lambda que verifica se um número é par:
+is_even = lambda x: x % 2 == 0
+print(is_even(6))  # Saída: True
+print(is_even(7))  # Saída: False
+
+Função lambda que inverte uma string:
+reverse_string = lambda s: s[::-1]
+print(reverse_string("Python"))  # Saída: "nohtyP"
+
+
+Função lambda que ordena uma lista de números:
+numbers = [5, 2, 9, 1, 6]
+sorted_numbers = sorted(numbers, key=lambda x: x)
+print(sorted_numbers)  # Saída: [1, 2, 5, 6, 9]
+
+
+Função lambda usada com a função map para elevar cada elemento de uma lista ao quadrado:
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = list(map(lambda x: x ** 2, numbers))
+print(squared_numbers)  # Saída: [1, 4, 9, 16, 25]
+
+Função lambda usada com a função filter para filtrar números pares de uma lista:
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # Saída: [2, 4, 6, 8]

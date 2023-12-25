@@ -1,0 +1,17 @@
+Multithreading com GIL:
+Crie um programa que execute tarefas em várias threads em paralelo, explorando o Global Interpreter Lock (GIL) do Python. Compare o desempenho da execução multithreaded com a execução sequencial.
+
+Programação Concorrente com asyncio:
+Escreva um programa que use a biblioteca asyncio para realizar tarefas concorrentes usando a abordagem de programação assíncrona. Implemente tarefas assíncronas que podem ser executadas concorrentemente.
+
+Comunicação entre Threads:
+Crie um programa que usa threads para realizar cálculos em paralelo e demonstra a comunicação entre as threads por meio de filas ou outros mecanismos de sincronização.
+
+Pool de Threads/Processos:
+Implemente um programa que usa um pool de threads ou processos para executar tarefas em paralelo. Compare o desempenho entre threads e processos em diferentes cenários.
+
+Paralelismo com concurrent.futures:
+Escreva um programa que utiliza a biblioteca concurrent.futures para realizar tarefas em paralelo usando o conceito de executores (executors) e paralelismo de alto nível.
+
+Tratamento de Condições de Corrida:
+Crie um programa que simule uma condição de corrida (race condition) e, em seguida, use mecanismos de sincronização, como mutexes, para garantir que as threads acessem os recursos compartilhados de maneira segura.

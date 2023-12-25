@@ -1,0 +1,9 @@
+Automatização de Extração de Dados
+
+Desenvolvi um script em Python para automatizar a extração de informações-chave de documentos PDF e Word.
+Utilizei bibliotecas como PyPDF2 e python-docx para processar arquivos PDF e Word, respectivamente.
+Implementei expressões regulares para extrair dados específicos, como números de casos, ordens de serviço e datas.
+As informações extraídas foram organizadas e registradas em uma planilha Excel usando a biblioteca openpyxl.
+Esse projeto resultou em uma significativa economia de tempo, eliminando a necessidade de entrada manual de dados.
+
+implementei um banco de dados eficiente para análise de vendas, incluindo tabelas para clientes, produtos e transações. Utilizando consultas SQL, calculei métricas essenciais como receita total, produtos mais vendidos, principais clientes e média de vendas por mês. Minhas contribuições proporcionaram insights valiosos para a tomada de decisões estratégicas da empresa, demonstrando proficiência em modelagem de dados e análise SQL.

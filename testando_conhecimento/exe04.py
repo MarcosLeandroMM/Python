@@ -1,0 +1,1 @@
+# Escreva uma função que recebe uma string e verifica se ela é um palíndromo (ou seja, se pode ser lida da mesma forma de trás para frente).

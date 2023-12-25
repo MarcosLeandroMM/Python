@@ -1,0 +1,105 @@
+Instruções Match
+combinar vários literais em um único padrão usando |
+ __match_args__
+Podemos adicionar uma cláusula if a um padrão, conhecido como “guarda”. Se a guarda for falsa, 
+match continua para tentar o próximo bloco de caso. Observe que a captura de valor ocorre antes que a guarda seja avaliada:
+
+Assim como desempacotar atribuições, os padrões de tupla e lista têm exatamente o mesmo significado e realmente correspondem a sequências arbitrárias. Uma exceção importante é que eles não correspondem a iteradores ou strings.
+
+Os padrões de sequência têm suporte ao desempacotamento estendido: [x, y, *rest] e (x, y, *rest) funcionam de forma semelhante ao desempacotamento de atribuições. O nome depois de * também pode ser _, então (x, y, *_) corresponde a uma sequência de pelo menos dois itens sem ligar os itens restantes.
+
+Padrões de mapeamento: {"bandwidth": b, "latency": l} captura os valores "bandwidth" e "latency" de um dicionário. Diferente dos padrões de sequência, chaves extra são ignoradas. Um desempacotamento como **rest também é permitido. (Mas **_ seria redundante, então não é permitido.)
+
+Subpadrões podem ser capturados usando a palavra reservada as:
+
+case (Point(x1, y1), Point(x2, y2) as p2): ...
+Vai capturar o segundo elemento da entrada como p2 (se a entrada for uma sequência de dois pontos)
+
+A maioria dos literais são comparados por igualdade, no entando os singletons True, False e None são comparados por identidade.
+
+Padrões podem usar constantes nomeadas. Estas devem ser nomes pontilhados para prevenir que sejam interpretadas como variáveis de captura
+
+Padrões de Correspondência e Combinando Literais:
+No Python 3.10, os padrões de correspondência introduzem uma maneira mais concisa e legível de realizar a correspondência de valores. Você pode combinar vários literais em um único padrão usando o operador |, que é chamado de operador "pipe".
+Exemplo:
+
+match valor:
+    case 1 | 2:
+        print("O valor é 1 ou 2")
+    case 3:
+        print("O valor é 3")
+    case _:
+        print("O valor não é 1, 2 ou 3")
+Neste exemplo, o padrão 1 | 2 corresponde a qualquer valor igual a 1 ou 2.
+
+
+Guarda em Padrões:
+Você pode adicionar uma cláusula if a um padrão, conhecida como "guarda". Se a guarda for falsa, a correspondência continua para tentar o próximo bloco de caso.
+Exemplo:
+
+match valor:
+    case x if x % 2 == 0:
+        print("O valor é par")
+    case x:
+        print("O valor é ímpar")
+Neste exemplo, o padrão x tem uma guarda if x % 2 == 0, que verifica se o valor é par antes de fazer a correspondência.
+
+
+Padrões de Sequência e Desempacotamento:
+Os padrões de sequência têm suporte ao desempacotamento, semelhante ao desempacotamento de atribuições. Você pode usar [x, y, *rest] e (x, y, *rest) para desempacotar sequências.
+Exemplo:
+
+match sequencia:
+    case [x, y, *rest]:
+        print(f"x: {x}, y: {y}, rest: {rest}")
+    case _:
+        print("Padrão não corresponde")
+Neste exemplo, [x, y, *rest] captura os primeiros dois elementos e o restante em rest.
+
+Padrões de Mapeamento:
+Os padrões de mapeamento permitem que você corresponda valores em dicionários.
+
+Exemplo:
+
+match dicionario:
+    case {"bandwidth": b, "latency": l}:
+        print(f"Bandwidth: {b}, Latency: {l}")
+    case _:
+        print("Padrão não corresponde")
+Neste exemplo, o padrão corresponde a dicionários que contêm as chaves "bandwidth" e "latency".
+
+Subpadrões e a palavra-chave as:
+Você pode capturar subpadrões usando a palavra reservada as.
+
+Exemplo:
+
+match entrada:
+    case (Point(x1, y1), Point(x2, y2) as p2):
+        print(f"Segundo elemento: {p2}")
+    case _:
+        print("Padrão não corresponde")
+
+Neste exemplo, o padrão captura o segundo elemento da entrada como p2.
+
+Constantes Nomeadas:
+Você pode usar constantes nomeadas para dar significado a valores literais.
+
+Exemplo:
+
+from enum import Enum
+
+class Cores(Enum):
+    VERMELHO = 1
+    VERDE = 2
+    AZUL = 3
+
+match cor:
+    case Cores.VERMELHO:
+        print("A cor é vermelha")
+    case Cores.VERDE:
+        print("A cor é verde")
+    case _:
+        print("Cor desconhecida")
+Neste exemplo, o padrão corresponde a valores do enum Cores.
+
+Os padrões de correspondência oferecem uma maneira mais legível e eficiente de realizar correspondências em Python, especialmente em estruturas de dados complexas. Eles podem tornar o código mais claro e conciso, evitando a necessidade de aninhar instruções if-elif-else.

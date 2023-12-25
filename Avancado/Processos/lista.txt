@@ -1,0 +1,17 @@
+Multiprocessamento Simples:
+Crie um programa que execute várias tarefas em processos separados usando a biblioteca multiprocessing. Compare o desempenho da execução multithreaded com a execução multiprocessada.
+
+Comunicação entre Processos:
+Implemente um programa que use processos para realizar cálculos em paralelo e demonstre a comunicação entre os processos por meio de pipes, filas ou outros mecanismos de IPC (Inter-Process Communication).
+
+Programação Concorrente com concurrent.futures e Processos:
+Escreva um programa que utiliza a biblioteca concurrent.futures para realizar tarefas em paralelo usando processos em vez de threads. Compare o desempenho entre as duas abordagens.
+
+Piscina de Processos:
+Implemente um programa que use uma piscina de processos para executar tarefas em paralelo. Avalie como o uso de uma piscina de processos pode melhorar o desempenho em comparação com a criação de processos individuais.
+
+Compartilhamento de Dados entre Processos:
+Crie um programa que compartilhe dados entre processos usando estruturas de dados compartilhadas, como multiprocessing.Array ou multiprocessing.Value. Certifique-se de lidar com a sincronização apropriada dos dados compartilhados.
+
+Paralelismo em Tarefas de E/S:
+Escreva um programa que explore o paralelismo de tarefas de entrada/saída (E/S) usando processos para executar várias operações de E/S, como leitura e gravação de arquivos em paralelo. 

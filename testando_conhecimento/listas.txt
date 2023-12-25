@@ -1,0 +1,19 @@
+11. Crie uma classe Student com os atributos name, age, e grades (uma lista de notas). Implemente um método para calcular a média das notas do aluno.
+
+12. Escreva uma função que recebe uma lista de números e retorna uma lista com os números em ordem inversa.
+
+13. Crie uma classe Car com os atributos marca, modelo, e ano. Implemente um método para imprimir as informações do carro em um formato legível.
+
+14. Escreva uma função que recebe uma string e verifica se ela é um palíndromo (ou seja, se pode ser lida da mesma forma de trás para frente).
+
+15. Crie uma classe Bank que mantém uma lista de contas bancárias. Implemente métodos para adicionar contas, remover contas e listar todas as contas.
+
+16. Escreva um programa que simule um jogo de dados. O jogador lança dois dados e a soma dos valores é calculada. Se a soma for 7 ou 11, o jogador ganha; se for 2, 3 ou 12, o jogador perde; caso contrário, o jogo continua até que o jogador role a soma original novamente (ganha) ou role um 7 (perde).
+
+17. Crie uma classe Livro com os atributos título, autor e ano. Implemente um método que permite emprestar o livro e rastreie seu status de empréstimo.
+
+18. Escreva uma função que recebe uma lista de números e retorna uma lista apenas com os números únicos, removendo duplicatas.
+
+19. Implemente um programa que simule um sistema de gerenciamento de tarefas. O programa deve permitir ao usuário criar, listar, marcar como concluída e remover tarefas.
+
+20. Crie uma classe Círculo com um atributo raio e implemente métodos para calcular a área e o perímetro do círculo.

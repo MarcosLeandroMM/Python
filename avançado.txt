@@ -1,0 +1,38 @@
+Padrões e Subpadrões
+
+Decoradores:
+
+Entender e criar decoradores em Python, que são uma forma poderosa de modificar ou estender o comportamento de funções.
+Geradores e Iteradores:
+
+Explorar geradores e iteradores para lidar eficientemente com grandes conjuntos de dados.
+Metaclasses:
+
+Compreender o conceito de metaclasses para personalizar a criação de classes em tempo de execução.
+Concorrência e Paralelismo:
+
+Estudar bibliotecas como asyncio para programação assíncrona e multiprocessing para paralelismo.
+Descriptors:
+
+Aprender sobre descritores, uma maneira avançada de personalizar o acesso a atributos de objetos.
+Context Managers:
+
+Utilizar e criar context managers, que são objetos usados com a declaração with para garantir a execução adequada de recursos.
+Programação Funcional:
+
+Explorar conceitos de programação funcional em Python, incluindo funções de ordem superior e expressões lambda.
+Manipulação de Bytes e Memória:
+
+Trabalhar com operações de baixo nível, como manipulação de bytes, para interagir com a memória diretamente.
+Introspecção e Atributos Mágicos:
+
+Usar introspecção para examinar objetos em tempo de execução e explorar atributos mágicos como __getattr__ e __setattr__.
+Cython e C-Extensions:
+
+Melhorar o desempenho do Python integrando código C usando Cython ou criando extensões C diretamente.
+Testes Avançados (TDD):
+
+Praticar Test-Driven Development (TDD) e aprender sobre ferramentas avançadas de teste como pytest.
+Machine Learning com Python:
+
+Entrar em tópicos avançados de aprendizado de máquina usando bibliotecas como scikit-learn, TensorFlow ou PyTorch.

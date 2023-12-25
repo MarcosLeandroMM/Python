@@ -1,0 +1,22 @@
+Debugger
+
+python -m trace --trace (Faz um Debugger do código e diz o que o código está fazendo)
+
+Python Debugger(PDB)
+ - já embutido (built-in)
+ Ipython Debugger(IPDB)
+ - pip install ipdb 
+
+Remote Python Debugger(RPDB)
+  - pip install rpdb
+  - Debugger remoto, via netcat
+
+Web Python Debugger(Web PDB)
+ - pip install web_pdb.server
+ - Debugger remoto utilizando o browser
+
+PySnooper
+ - pip install pysnooper 
+ - Integrações de IDEs
+
+ 

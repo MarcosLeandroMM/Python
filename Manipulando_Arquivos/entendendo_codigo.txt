@@ -1,0 +1,61 @@
+def encontrar_palavra_chave(pdf_path, excel_path):
+Declara uma função chamada encontrar_palavra_chave que recebe dois parâmetros: pdf_path (caminho do arquivo PDF) e excel_path (caminho do arquivo Excel).
+
+informacoes_encontradas = []
+Inicializa uma lista vazia chamada informacoes_encontradas que será usada para armazenar as informações encontradas no PDF.
+
+with open(pdf_path, 'rb') as file:
+Abre o arquivo PDF em modo de leitura binária ('rb') usando um bloco with para garantir que o arquivo seja fechado corretamente após o uso.
+
+pdf_reader = PyPDF2.PdfReader(file)
+Cria um objeto PdfReader do PyPDF2 para ler o PDF.
+
+num_paginas = len(pdf_reader.pages)
+Obtém o número total de páginas no PDF.
+
+for pagina_numero in range(num_paginas):
+Inicia um loop que itera sobre cada página do PDF.
+
+pagina = pdf_reader.pages[pagina_numero]
+Obtém a página atual dentro do loop.
+
+texto_pagina = pagina.extract_text()
+Extrai o texto da página atual.
+
+caso, ordem_servico, data = extrair_info(texto_pagina)
+Chama a função extrair_info para obter informações específicas (caso, ordem de serviço, data) da página.
+
+if caso or ordem_servico or data:
+Verifica se pelo menos uma informação foi encontrada na página.
+
+informacoes_encontradas.append({ 'Caso': caso, 'Ordem de Serviço': ordem_servico, 'Data': data })
+Adiciona um dicionário contendo as informações encontradas à lista informacoes_encontradas.
+
+workbook = openpyxl.Workbook()
+Cria um novo objeto Workbook do openpyxl, que representa um arquivo Excel.
+
+sheet = workbook.active
+Obtém a planilha ativa do Workbook. No openpyxl, por padrão, a primeira planilha é ativa.
+
+Escrever Cabeçalho:
+cabecalho = ['Caso', 'Ordem de Serviço', 'Data']
+Define os rótulos do cabeçalho da planilha.
+
+for coluna, titulo in enumerate(cabecalho, start=1):
+Itera sobre os elementos do cabeçalho, atribuindo a coluna o índice da coluna e a titulo o rótulo do cabeçalho.
+
+sheet.cell(row=1, column=coluna, value=titulo)
+Escreve cada título na primeira linha da planilha, na coluna correspondente.
+
+Escrever Dados:
+for linha, informacao in enumerate(informacoes_encontradas, start=2):
+Itera sobre as informações encontradas, atribuindo a linha o índice da linha e a informacao o dicionário de informações.
+
+for coluna, valor in enumerate(informacao.values(), start=1):
+Itera sobre os valores no dicionário de informações, atribuindo a coluna o índice da coluna e a valor o valor correspondente.
+
+sheet.cell(row=linha, column=coluna, value=valor)
+Escreve cada valor na célula apropriada da planilha.
+
+workbook.save(excel_path)
+Salva o Workbook (arquivo Excel) no caminho especificado (excel_path).
